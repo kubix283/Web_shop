@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+{%block title%} Category List {%endblock title%}
+
+{%block body%}
+<h1>Category List</h1>
+{%if categories%}
+
+    {%for category in categories%}
+    <ul>
+        <li><a href="#">{{category.category_name}}</a></li>
+    </ul>
+    {%endfor%}
+{%else%}
+    <h2>No existing category</h2>
+{%endif%}
+{%endblock body%}
