@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+{%block title%} Add Category {%endblock title%}
+
+{%block body%}
+<div class="container">
+    <form method="POST" class="form-inline">
+        <div class="form-group mb-2">
+            {%csrf_token%}
+            {{form.as_div}}
+        </div>
+        <input class="btn btn-primary" type="submit" value="Edit Category">
+    </form>
+</div>
+
+{%endblock body%}

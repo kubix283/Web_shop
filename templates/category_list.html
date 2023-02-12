@@ -6,11 +6,13 @@
 {%if categories%}
 
     {%for category in categories%}
-    <ul>
-        <li><a href="{% url 'category' category.slug %}">{{category.category_name}}</a></li>
+    <ul class="list-inline">
+        <li class="list-inline-item"><a class="social-icon text-xs-center" href="{% url 'category' category.slug %}">{{category.category_name}}</a></li>
+        <li class="list-inline-item"><a class="social-icon text-xs-center" href="{% url 'edit_category' category.slug %}">Edit</a></li>
     </ul>
     {%endfor%}
 {%else%}
     <h2>No existing category</h2>
 {%endif%}
+<a class="btn btn-primary" href="{% url 'add_category'%}">Add Category</a>
 {%endblock body%}

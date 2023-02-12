@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse_lazy
+from .forms import AddCategoryForm
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Category, Product
 
 class CategoryListView(ListView):
@@ -26,3 +28,19 @@ def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
     categories = product.categories.all()
     return render(request, 'product_detail.html', {'product': product, 'categories': categories})
+
+
+
+class AddCategoryView(CreateView):
+    model = Category
+    fields = ('category_name', 'slug')
+    template_name = 'add_category.html'
+    success_url = reverse_lazy('categories')
+
+
+class UpdateCategoryView(UpdateView):
+    model = Category
+    template_name = 'update_category.html'
+    fields = ('__all__')
+    success_url = reverse_lazy('categories')
+
