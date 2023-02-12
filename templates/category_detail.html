@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+{%block title%} {{category.category_name}} {%endblock title%}
+
+{%block body%}
+<h1>Category: {{category.category_name}}</h1>
+<br>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name product</th>
+                <th>Vat product</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for product in products %}
+            <tr>
+                <td><a href="{% url 'product' product.pk%}">{{product.name}}</a></td>
+                <td>{{ product.price_brutto}}</td>
+            </tr>
+            {%endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{%endblock body%}
