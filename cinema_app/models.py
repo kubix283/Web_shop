@@ -24,3 +24,9 @@ class Product(models.Model):
     vat = models.FloatField(choices=VAT)
     stock = models.PositiveIntegerField()
     categories = models.ManyToManyField(Category)
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('product', kwargs={'pk':self.pk})

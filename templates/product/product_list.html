@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+{%block title%}Product List{% endblock title%}
+
+{%block body%}
+{%if products%}
+{%for product in products %}
+<div class="container">
+    <ul class="list-inline">
+        <li class="list-inline-item">{{product.name}}</li>
+        <li class="list-inline-item"><a href="{%url 'product_update' product.pk%}">Edit</a></li>
+        <li class="list-inline-item"><a href="{% url 'product_delete' product.pk%}">Delete</a></li>
+    </ul>
+</div>
+{%endfor%}
+<div class="container">
+    <button class="btn btn-primary"><a href="{%url 'add_product'%}">Add Product</a></button>
+</div>
+{%else%}
+<div class="container">
+    No available products
+</div>
+<div class="container">
+    <button class="btn btn-secondary"><a href="{%url 'add_product'%}">Add Product</a></button>
+</div>
+{%endif%}
+
+{%endblock body%}
